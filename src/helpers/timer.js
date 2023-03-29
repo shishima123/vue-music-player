@@ -1,6 +1,6 @@
 /**
  * Format seconds into a string minutes:seconds
- * @param {integer} seconds
+ * @param {number} seconds
  */
 
 const formatTimer = seconds => {

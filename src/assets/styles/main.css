@@ -80,27 +80,35 @@ input[type=number] {
     -moz-appearance: textfield;
 }
 
+.pc-only {
+    display: block;
+}
+
+.sp-only {
+    display: none;
+}
 
 /**** Start playlist ****/
 .playlist {
     background-color: #fff;
-    overflow-y: auto;
-    max-height: 622px;
+    max-height: 545px;
     border-radius: 10px;
+    position: relative;
+    overflow: auto;
 }
 
 .playlist h3 {
     color: #212121;
     font-size: 18px;
     font-weight: 400;
-    margin-top: 20px;
-    margin-bottom: 20px;
     text-align: center;
+    padding: 20px 0;
 }
 
 .playlist .song {
     display: flex;
     padding: 10px;
+    cursor: pointer;
 }
 
 .playlist .song.active {
@@ -113,6 +121,19 @@ input[type=number] {
     height: 40px;
     justify-content: center;
     box-shadow: -1px 17px 24px -6px rgba(0, 0, 0, .2);
+    cursor: pointer;
+    font-size: 20px;
+    color: #ba83ca;
+    display: none;
+}
+
+.song:hover .delete {
+    display: block;
+}
+
+.actions > .close {
+    width: 40px;
+    height: 40px;
     cursor: pointer;
     font-size: 20px;
     color: #ba83ca;
@@ -132,7 +153,7 @@ input[type=number] {
     flex-wrap: nowrap;
     width: 100%;
     max-width: 375px;
-    max-height: 623px;
+    max-height: 545px;
     margin: 0 auto;
     padding: 25px;
     background-color: #fff;
@@ -319,20 +340,50 @@ input[type=number] {
     flex-wrap: nowrap;
     width: 100%;
     max-width: 375px;
-    max-height: 623px;
+    max-height: 545px;
     margin: 0 auto;
-    padding: 0 25px 25px;
     background-color: #fff;
     border-radius: 15px;
+    overflow: auto;
+}
+
+.ps {
+    max-height: calc(100% - 80px);
+}
+.ps> .ps__rail-x, .ps> .ps__rail-y{
+    opacity: 0.2;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+    width: 0px;
+    background-color: transparent;
+}
+
+.scrollbar-hidden:hover::-webkit-scrollbar {
+    width: 10px;
+    background-color: #f5f5f5;
+}
+
+.scrollbar-hidden::-webkit-scrollbar-thumb {
+    background-color: #000000;
+}
+
+.lyrics .text {
+    padding: 20px 25px;;
+    text-align: center;
+    overflow: hidden;
+}
+
+.lyrics .text:hover {
+    overflow: auto;
 }
 
 .lyrics h3 {
     color: #212121;
     font-size: 18px;
     font-weight: 400;
-    margin-top: 20px;
-    margin-bottom: 20px;
     text-align: center;
+    padding: 20px 0;
 }
 
 .lyrics p {
@@ -355,13 +406,58 @@ input[type=number] {
         height: 100%;
     }
 
-    .playlist {
-        height: 0;
-        max-height: 200px;
+    .pc-only {
+        display: none;
     }
 
-    .lyrics {
-        height: 0;
+    .sp-only {
+        display: block;
     }
+
+    .playlist, .lyrics {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        height: 0;
+        z-index: 10;
+        border-radius: 10px 10px 0 0;
+        transition: height 0.3s;
+        max-width: 100%;
+    }
+
+    .playlist.active, .lyrics.active {
+        box-shadow: rgb(44, 62, 80) 0px -15px 15px -15px;
+        height: 80vh;
+    }
+
+    .playlist h3, .lyrics h3 {
+        border-bottom: #5d5555 solid 1px;
+        top: 0;
+        background-color: white;
+    }
+
+    .actions > .close {
+        display: block;
+        position: absolute;
+        top: 13px;
+        right: 10px;
+        z-index: 12;
+    }
+
+    /**** Start navigation mobile ****/
+    .nav-mobile {
+        position: sticky;
+        top: 20px;
+        left: 0;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 5px;
+        font-size: 25px;
+        color: white;
+    }
+
+    /**** End navigation mobile ****/
 }
+
 /**** End Mobile ****/

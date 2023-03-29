@@ -14,9 +14,9 @@
     "@fortawesome/vue-fontawesome": "^0.1.9",
     "axios": "^0.19.2",
     "core-js": "^3.6.4",
-    "k-progress": "^1.5.0",
     "vue": "^2.6.11",
-    "vue-slider-component": "^3.2.24"
+    "vue-slider-component": "^3.2.24",
+    "vue2-perfect-scrollbar": "^1.5.56"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.3.0",
