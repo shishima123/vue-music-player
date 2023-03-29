@@ -48,20 +48,6 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-main {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    width: 100%;
-    max-width: 375px;
-    max-height: 623px;
-    margin: 0 auto;
-    padding: 25px;
-    background-color: #fff;
-    border-radius: 15px;
-    animation: scale-up-center 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-}
-
 button {
     appearance: none;
     background: none;
@@ -76,6 +62,13 @@ button:hover {
     transform: scale(1.1);
 }
 
+#app {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 20px;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -85,6 +78,65 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
     -moz-appearance: textfield;
+}
+
+
+/**** Start playlist ****/
+.playlist {
+    background-color: #fff;
+    overflow-y: auto;
+    max-height: 622px;
+    border-radius: 10px;
+}
+
+.playlist h3 {
+    color: #212121;
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.playlist .song {
+    display: flex;
+    padding: 10px;
+}
+
+.playlist .song.active {
+    background-color: #cccaca;
+}
+
+.actions > .delete {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    box-shadow: -1px 17px 24px -6px rgba(0, 0, 0, .2);
+    cursor: pointer;
+    font-size: 20px;
+    color: #ba83ca;
+}
+
+.playlist .song:hover {
+    background-color: #ededed;
+    transition: box-shadow .2s, background-color .3s;
+}
+
+/**** End playlist ****/
+
+/**** Start Player ****/
+.player {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 100%;
+    max-width: 375px;
+    max-height: 623px;
+    margin: 0 auto;
+    padding: 25px;
+    background-color: #fff;
+    border-radius: 10px;
 }
 
 .song-details {
@@ -189,46 +241,22 @@ input[type=number] {
     position: relative;
 }
 
-.playlist {
-    background-color: #fff;
-    overflow-y: auto;
-    max-height: 622px;
-    border-radius: 5px;
-}
-
-.playlist h3 {
-    color: #212121;
-    font-size: 18px;
-    font-weight: 400;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.playlist .song {
+.volume_container {
+    width: 70%;
     display: flex;
-    padding: 10px;
-}
-
-.playlist .song.active {
-    background-color: #cccaca;
-}
-
-
-.actions > .delete {
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    align-items: center;
     justify-content: center;
-    box-shadow: -1px 17px 24px -6px rgba(0, 0, 0, .2);
-    cursor: pointer;
-    font-size: 20px;
-    color: #ba83ca;
+    margin: 0 auto;
 }
 
-.playlist .song:hover {
-    background-color: #ededed;
-    transition: box-shadow .2s, background-color .3s;
+.volume_container .volume-down {
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.volume_container .volume-up {
+    margin-left: 15px;
+    display: inline-block;
 }
 
 .timer {
@@ -242,25 +270,29 @@ input[type=number] {
     margin-top: 15px !important;
     padding-right: 0 !important;
 }
+
 .footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 0;
 }
-.footer > a {
-    cursor: pointer;
-    color: #d4d4d4;
-    position: relative;
-    top: -10px;
-    font-size: 25px;
+
+.footer .loops p {
+    color: #5d5555;
 }
+
+.footer .loops p:not(:last-child) {
+    margin-bottom: 5px;
+}
+
 .footer .btn-reset {
     width: 80px;
     height: 40px;
     border: solid 1px #d4d4d4;
     border-radius: 5px;
 }
+
 .footer .btn-reset:hover {
     background-color: #f3f3f3;
 }
@@ -277,13 +309,43 @@ input[type=number] {
 .text-primary {
     color: #dc3545;
 }
-#app {
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: 1fr 1fr;
-    padding: 20px;
+
+/**** End Player ****/
+
+/**** Start Lyrics ****/
+.lyrics {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 100%;
+    max-width: 375px;
+    max-height: 623px;
+    margin: 0 auto;
+    padding: 0 25px 25px;
+    background-color: #fff;
+    border-radius: 15px;
 }
 
+.lyrics h3 {
+    color: #212121;
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.lyrics p {
+    color: #5d5555;
+}
+
+.lyrics p:not(:last-child) {
+    margin-bottom: 8px;
+}
+
+/**** End Lyrics ****/
+
+/**** Start Mobile ****/
 @media (max-width: 768px) {
     #app {
         grid-template-columns: 1fr;
@@ -291,10 +353,15 @@ input[type=number] {
 
     body {
         height: 100%;
-        margin-top: 10px;
     }
 
     .playlist {
+        height: 0;
         max-height: 200px;
     }
+
+    .lyrics {
+        height: 0;
+    }
 }
+/**** End Mobile ****/
