@@ -18,10 +18,10 @@
       <perfect-scrollbar class="text" ref="songPlaylist">
         <ul>
           <li
-            v-for="song in songs"
+            v-for="(song, key) in songs"
             :key="song.id"
             class="song"
-            @click="play(song, true)"
+            @click="play(key, true)"
             :class="{ active: song.id === current.id }"
           >
             <div class="cover-playlist">
@@ -34,7 +34,11 @@
               <p class="artist">{{ song.artist }}</p>
             </div>
             <div class="actions">
-              <button @click="removeSongFromPlaylist(song)" class="delete">
+              <button
+                @click="removeSongFromPlaylist(song)"
+                class="delete"
+                v-if="removeSongFlg"
+              >
                 <font-awesome-icon icon="times" />
               </button>
             </div>
@@ -85,7 +89,7 @@
         <button class="prev" @click="prev" v-if="songs.length > 1">
           <font-awesome-icon icon="step-backward" />
         </button>
-        <button class="play" v-if="!isPlaying" @click="play">
+        <button class="play" v-if="!isPlaying" @click="() => play(index)">
           <font-awesome-icon icon="play" />
         </button>
         <button class="pause" v-else @click="pause">
@@ -159,7 +163,8 @@ export default {
       volumeSlider: 100,
       activePlaylist: false,
       activeLyrics: false,
-      currentLyric: ""
+      currentLyric: "",
+      removeSongFlg: false
     };
   },
   methods: {
@@ -172,6 +177,7 @@ export default {
     },
     setCurrentSong() {
       this.current = this.songs[this.index];
+      this.player.src = this.current.src;
       this.setCover();
     },
     setCurrentlyTimer(time) {
@@ -180,53 +186,40 @@ export default {
       }
       this.player.currentTime = time + 0.1;
     },
-    play(song, isClickFromList = false) {
-      if (isClickFromList && song === this.current && this.isPlaying) {
+    play(index, isClickFromList = false) {
+      if (isClickFromList && index === this.index && this.isPlaying) {
         return true;
       }
-      if (typeof song.src !== "undefined") {
-        this.current.isPlaying = false;
-        this.index = this.songs.indexOf(this.current);
-        this.current = song;
-        this.player.src = this.current.src;
+
+      if (this.index !== index) {
+        this.setLoopsCount(0);
       }
-      this.player.play();
-      this.isPlaying = true;
+      this.index = index;
+      this.setCurrentSong();
       this.scrollToActive();
-      this.setCover();
+
+      setTimeout(() => {
+        this.player.play();
+        this.isPlaying = true;
+      }, 500);
     },
     pause() {
       this.player.pause();
       this.isPlaying = false;
     },
     next() {
-      this.current.isPlaying = false;
-      this.index = this.songs.indexOf(this.current);
-      this.index++;
-      if (this.index > this.songs.length - 1) {
-        this.index = 0;
-      }
-      this.setCurrentSong();
-      this.setLoopsCount(0);
-      this.play(this.current);
+      let newIndex = (this.index + 1) % this.songs.length;
+      this.play(newIndex);
     },
     prev() {
-      this.current.isPlaying = false;
-      this.index = this.songs.indexOf(this.current);
-      this.index--;
-      if (this.index < 0) {
-        this.index = this.songs.length - 1;
-      }
-      this.setCurrentSong();
-      this.setLoopsCount(0);
-      this.play(this.current);
+      let newIndex = (this.index - 1 + this.songs.length) % this.songs.length;
+      this.play(newIndex);
     },
     removeSongFromPlaylist(song) {
       if (this.songs.length > 1) {
         if (this.index > 0) {
           this.index--;
         }
-        this.current.isPlaying = false;
         this.songs = deleteElement(this.songs, song);
         this.setCurrentSong();
       }
@@ -244,7 +237,6 @@ export default {
         this.currentlyTimer = formatTimer(playerTimer);
         let percent = Math.round((playerTimer * 100) / this.current.seconds);
         this.seekSlider = percent > 100 ? 100 : percent;
-        this.current.isPlaying = true;
       });
       this.player.addEventListener("ended", () => {
         this.setLoopsCount(++this.countLoops);
@@ -252,7 +244,7 @@ export default {
           this.next();
         }
         this.isPlaying = false;
-        this.play(this.current);
+        this.play(this.index);
       });
     },
     seekTo() {
@@ -277,20 +269,20 @@ export default {
       }
     },
     scrollToActive() {
-      const list = this.$refs.songPlaylist;
-      const active = list.$el.querySelector(".active");
-      const listRect = list.$el.getBoundingClientRect();
-      const activeRect = active.getBoundingClientRect();
-      if (
-        activeRect.top < listRect.top ||
-        activeRect.bottom > listRect.bottom - 100
-      ) {
-        setTimeout(() => {
+      setTimeout(() => {
+        const list = this.$refs.songPlaylist;
+        const active = list.$el.querySelector(".active");
+        const listRect = list.$el.getBoundingClientRect();
+        const activeRect = active.getBoundingClientRect();
+        if (
+          activeRect.top < listRect.top ||
+          activeRect.bottom > listRect.bottom - 100
+        ) {
           list.$el.scrollTo({
             top: active.offsetTop - 150
           });
-        }, 500);
-      }
+        }
+      });
     },
     getSettingFromLocalStorage() {
       let attribute = ["volumeSlider", "loops", "countLoops"];
@@ -310,7 +302,8 @@ export default {
     this.songs = threatSongs(this.songs);
     this.getSettingFromLocalStorage();
     this.setCurrentSong();
-    this.player.src = this.current.src;
+    this.scrollToActive();
+
     this.registerListener();
   },
   computed: {
