@@ -13,4 +13,18 @@ const formatTimer = seconds => {
   return output;
 };
 
-export { formatTimer };
+const timeStringToSecond = timeString => {
+  if (!timeString) {
+    return 0;
+  }
+  const [hours, minutes, secondsAndMilliseconds] = timeString.split(":");
+  const [seconds, milliseconds] = secondsAndMilliseconds.split(",");
+  return (
+    parseInt(hours) * 3600 +
+    parseInt(minutes) * 60 +
+    parseInt(seconds) +
+    parseFloat(`0.${milliseconds}`)
+  );
+};
+
+export { formatTimer, timeStringToSecond };

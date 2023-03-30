@@ -3,48 +3,39 @@ const songs = [
     id: 1,
     title: "LPTD_1-1",
     artist: "LPTD",
-    seconds: 201,
+    seconds: 66,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/MyYou.mp3"),
-    lyric: `1
-00:00:00,600 --> 00:00:04,266
-<b>in this video we will analyze an open source package</b>
-
-2
-00:00:04,266 --> 00:00:06,966
-or rather project called accounting
-
-3
-00:00:07,200 --> 00:00:09,500
-and the purpose of this video is to analyze
-
-4
-00:00:09,500 --> 00:00:10,400
-its structure
-
-5
-00:00:10,400 --> 00:00:11,733
-the cold structure
-
-6
-00:00:11,733 --> 00:00:14,666
-the architecture the patterns that are used
-
-7
-00:00:14,866 --> 00:00:16,299
-so we can learn from
-
-8
-00:00:16,400 --> 00:00:20,200
-the best solutions that are available in open source`
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-01.mp3"),
+    lyric: `Unit 1 A Picnic by the River
+    
+W: This is a good spot. Let’s stop and have our picnic
+next to the river.
+M: Good idea. Walking always makes me hungry.
+I’m ready for lunch.
+W: We can sit here on the grass. Oh no! Someone
+forgot to throw these empty paper bags away.
+There is litter everywhere!
+M: Why do people always leave litter around? It’s
+not a nice thing to do. It spoils other people’s
+picnics.
+W: I think they are lazy. Or maybe they just don’t
+care. Look, there are some empty cans and glass
+bottles under that tree, too. 
+M: People should clean up before they leave, and
+not leave litter lying around. 
+W: That’s right. Well, after our picnic, let’s pick up
+all the litter we can and take it out of here.
+M: OK! And next week, let’s come back with
+friends and pick up some more.
+W: Good idea!`
   },
   {
     id: 2,
     title: "LPTD_1-2",
     artist: "LPTD",
-    seconds: 2,
+    seconds: 60,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/sound.wav"),
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-02.mp3"),
     lyric: `Unit 2 Let’s Recycle!
 M: Hi, Jane! Have you heard about the new laws to
 help people recycle?
@@ -72,9 +63,9 @@ the environment clean.`
     id: 3,
     title: "LPTD_1-3",
     artist: "LPTD",
-    seconds: 2,
+    seconds: 64,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/sound.wav"),
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-03.mp3"),
     lyric: `Unit 3 Growing Roses
 M: Excuse me, ma’am. I have a problem with my
 rose bush. It used to produce a lot of pink roses.
@@ -100,9 +91,9 @@ W: You’re welcome!`
     id: 4,
     title: "LPTD_1-4",
     artist: "LPTD",
-    seconds: 2,
+    seconds: 70,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/sound.wav"),
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-04.mp3"),
     lyric: `Unit 4 Bird Watching
 B : I want to go bird watching tomorrow. Do you
 know a good area for birds?
@@ -129,9 +120,9 @@ after all!`
     id: 5,
     title: "LPTD_1-5",
     artist: "LPTD",
-    seconds: 2,
+    seconds: 74,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/sound.wav"),
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-05.mp3"),
     lyric: `Unit 5 Trees in the Forest
 B : There are many forests in North America.
 There are many trees in these forests. Some of
@@ -156,9 +147,9 @@ trees. We should all take care of forests.`
     id: 6,
     title: "LPTD_1-6",
     artist: "LPTD",
-    seconds: 2,
+    seconds: 69,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/sound.wav"),
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-06.mp3"),
     lyric: `Unit 6 An Easy Way to Shop
 G : Hey, Steve. Look at my new MP3 player!
 B : Wow! It looks cool! Where did you buy it?
@@ -182,9 +173,9 @@ card.`
     id: 7,
     title: "LPTD_1-7",
     artist: "LPTD",
-    seconds: 2,
+    seconds: 62,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/sound.wav"),
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-07.mp3"),
     lyric: `Unit 7 Cell Phone Messages
 W: I need to check my messages.
 M: How are you going to do that? We are in the
@@ -211,9 +202,9 @@ W: You’re welcome. I think you’ll find it useful.`
     id: 8,
     title: "LPTD_1-8",
     artist: "LPTD",
-    seconds: 2,
+    seconds: 69,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/sound.wav"),
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-08.mp3"),
     lyric: `Unit 8 Bubbles in Boiling Water
 G : Where do the bubbles come from when you
 boil water? 
@@ -237,9 +228,9 @@ drop of the water will be gone. Try it and see!`
     id: 9,
     title: "LPTD_1-9",
     artist: "LPTD",
-    seconds: 2,
+    seconds: 70,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/sound.wav"),
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-09.mp3"),
     lyric: `Unit 9 The Blue Sky
 B : Joe asked me something about science just now.
 But I didn’t know the answer.
@@ -266,9 +257,9 @@ B : Now I understand why the sky is blue!`
     id: 10,
     title: "LPTD_1-10",
     artist: "LPTD",
-    seconds: 2,
+    seconds: 64,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/sound.wav"),
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-10.mp3"),
     lyric: `Unit 10 A New Camera
 M: I just bought a digital camera!
 W: What is wrong with your old camera?
@@ -296,9 +287,9 @@ W: Great! Maybe I should get a digital camera, too.`
     id: 11,
     title: "LPTD_1-11",
     artist: "LPTD",
-    seconds: 2,
+    seconds: 69,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/sound.wav"),
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-11.mp3"),
     lyric: `Unit 11 Gold
 M: Gold has been a part of many cultures for
 hundreds of years. People made coins and jewelry
@@ -321,9 +312,9 @@ more useful now than ever before.`
     id: 12,
     title: "LPTD_1-12",
     artist: "LPTD",
-    seconds: 2,
+    seconds: 64,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/sound.wav"),
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-12.mp3"),
     lyric: `Unit 12 The Summer Music Festival
 W: Have you heard about the music festival next
 summer? I read that it is going to have about 20
@@ -347,9 +338,9 @@ spend that much on a ticket. Good luck, anyway!`
     id: 13,
     title: "LPTD_1-13",
     artist: "LPTD",
-    seconds: 2,
+    seconds: 68,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/sound.wav"),
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-13.mp3"),
     lyric: `Unit 13 The School Play
 B : Are you going to the school play on Saturday
 night?
@@ -377,9 +368,9 @@ good seats!`
     id: 14,
     title: "LPTD_1-14",
     artist: "LPTD",
-    seconds: 2,
+    seconds: 65,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/sound.wav"),
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-14.mp3"),
     lyric: `Unit 14 Ballet Class
 W: Hi Cindy, where are you going?
 G : Good afternoon, Mrs. White, I’m going to ballet
@@ -404,9 +395,9 @@ W: Well, go and have some fun dancing!`
     id: 15,
     title: "LPTD_1-15",
     artist: "LPTD",
-    seconds: 2,
+    seconds: 71,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/sound.wav"),
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-15.mp3"),
     lyric: `Unit 15 Monet’s Garden
 W: Claude Monet was a great artist. He was the
 first of a group of artists called the
@@ -430,9 +421,9 @@ come to see the place that Monet loved so much.`
     id: 16,
     title: "LPTD_1-16",
     artist: "LPTD",
-    seconds: 2,
+    seconds: 76,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/sound.wav"),
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-16.mp3"),
     lyric: `Unit 16 A Haunted House
 G : Oh no, it’s raining! I wanted to go to the beach
 today.
@@ -459,9 +450,9 @@ with you!`
     id: 17,
     title: "LPTD_1-17",
     artist: "LPTD",
-    seconds: 2,
+    seconds: 63,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/sound.wav"),
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-17.mp3"),
     lyric: `Unit 17 A Big Screen TV
 M: I’m thinking about buying a big screen TV.
 W: Wow! I’ve seen those in the store. They cost a lot
@@ -485,9 +476,9 @@ buy it!`
     id: 18,
     title: "LPTD_1-18",
     artist: "LPTD",
-    seconds: 2,
+    seconds: 66,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/sound.wav"),
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-18.mp3"),
     lyric: `Unit 18 He’s Famous!
 B : Are you going to the new Tim Cross movie
 tonight?
@@ -513,9 +504,9 @@ haircut!`
     id: 19,
     title: "LPTD_1-19",
     artist: "LPTD",
-    seconds: 2,
+    seconds: 65,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/sound.wav"),
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-19.mp3"),
     lyric: `Unit 19 A Housewarming Party
 W: Hi, Steve! Thanks for coming to my housewarming
 party.
@@ -541,9 +532,9 @@ M: Thanks. The food looks delicious!`
     id: 20,
     title: "LPTD_1-20",
     artist: "LPTD",
-    seconds: 2,
+    seconds: 70,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/sound.wav"),
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-20.mp3"),
     lyric: `Unit 20 Making Music
 M: Do you like to listen to music? Music is
 made up of sound. People all over the world like
@@ -567,180 +558,180 @@ group of people who play musical instruments.`
     id: 21,
     title: "LPTD_1-21",
     artist: "LPTD",
-    seconds: 2,
+    seconds: 70,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/sound.wav"),
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-21.mp3"),
     lyric: ``
   },
   {
     id: 22,
     title: "LPTD_1-22",
     artist: "LPTD",
-    seconds: 2,
+    seconds: 61,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/sound.wav"),
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-22.mp3"),
     lyric: ``
   },
   {
     id: 23,
     title: "LPTD_1-23",
     artist: "LPTD",
-    seconds: 2,
+    seconds: 75,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/sound.wav"),
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-23.mp3"),
     lyric: ``
   },
   {
     id: 24,
     title: "LPTD_1-24",
     artist: "LPTD",
-    seconds: 2,
+    seconds: 67,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/sound.wav"),
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-24.mp3"),
     lyric: ``
   },
   {
     id: 25,
     title: "LPTD_1-25",
     artist: "LPTD",
-    seconds: 2,
+    seconds: 71,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/sound.wav"),
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-25.mp3"),
     lyric: ``
   },
   {
     id: 26,
     title: "LPTD_1-26",
     artist: "LPTD",
-    seconds: 2,
+    seconds: 73,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/sound.wav"),
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-26.mp3"),
     lyric: ``
   },
   {
     id: 27,
     title: "LPTD_1-27",
     artist: "LPTD",
-    seconds: 2,
+    seconds: 69,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/sound.wav"),
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-27.mp3"),
     lyric: ``
   },
   {
     id: 28,
     title: "LPTD_1-28",
     artist: "LPTD",
-    seconds: 2,
+    seconds: 70,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/sound.wav"),
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-28.mp3"),
     lyric: ``
   },
   {
     id: 29,
     title: "LPTD_1-29",
     artist: "LPTD",
-    seconds: 2,
+    seconds: 67,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/sound.wav"),
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-29.mp3"),
     lyric: ``
   },
   {
     id: 30,
     title: "LPTD_1-30",
     artist: "LPTD",
-    seconds: 2,
+    seconds: 69,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/sound.wav"),
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-30.mp3"),
     lyric: ``
   },
   {
     id: 31,
     title: "LPTD_1-31",
     artist: "LPTD",
-    seconds: 2,
+    seconds: 67,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/sound.wav"),
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-31.mp3"),
     lyric: ``
   },
   {
     id: 32,
     title: "LPTD_1-32",
     artist: "LPTD",
-    seconds: 2,
+    seconds: 73,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/sound.wav"),
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-32.mp3"),
     lyric: ``
   },
   {
     id: 33,
     title: "LPTD_1-33",
     artist: "LPTD",
-    seconds: 2,
+    seconds: 66,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/sound.wav"),
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-33.mp3"),
     lyric: ``
   },
   {
     id: 34,
     title: "LPTD_1-34",
     artist: "LPTD",
-    seconds: 2,
+    seconds: 73,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/sound.wav"),
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-34.mp3"),
     lyric: ``
   },
   {
     id: 35,
     title: "LPTD_1-35",
     artist: "LPTD",
-    seconds: 2,
+    seconds: 74,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/sound.wav"),
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-35.mp3"),
     lyric: ``
   },
   {
     id: 36,
     title: "LPTD_1-36",
     artist: "LPTD",
-    seconds: 2,
+    seconds: 68,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/sound.wav"),
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-36.mp3"),
     lyric: ``
   },
   {
     id: 37,
     title: "LPTD_1-37",
     artist: "LPTD",
-    seconds: 2,
+    seconds: 69,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/sound.wav"),
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-37.mp3"),
     lyric: ``
   },
   {
     id: 38,
     title: "LPTD_1-38",
     artist: "LPTD",
-    seconds: 2,
+    seconds: 61,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/sound.wav"),
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-38.mp3"),
     lyric: ``
   },
   {
     id: 39,
     title: "LPTD_1-39",
     artist: "LPTD",
-    seconds: 2,
+    seconds: 67,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/sound.wav"),
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-39.mp3"),
     lyric: ``
   },
   {
     id: 40,
     title: "LPTD_1-40",
     artist: "LPTD",
-    seconds: 2,
+    seconds: 58,
     cover: require("../assets/images/LPTD1.1/cover.jpg"),
-    src: require("../assets/audios/sound.wav"),
+    src: require("../assets/audios/LPTD1.1/ListeningPracticeThroughDictation_1-40.mp3"),
     lyric: ``
   }
 ];

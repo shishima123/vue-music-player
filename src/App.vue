@@ -15,13 +15,13 @@
         </button>
       </div>
       <h3>Now Playing <span> 🎵 </span></h3>
-      <perfect-scrollbar class="text">
+      <perfect-scrollbar class="text" ref="songPlaylist">
         <ul>
           <li
             v-for="song in songs"
             :key="song.id"
             class="song"
-            @click="play(song)"
+            @click="play(song, true)"
             :class="{ active: song.id === current.id }"
           >
             <div class="cover-playlist">
@@ -124,16 +124,20 @@
       </div>
       <h3>Lyrics</h3>
       <perfect-scrollbar class="text">
-        <p v-for="(lyric, index) in convertLyric" :key="index">
-          {{ lyric }}
-        </p>
+        <p
+          v-html="lyric.text"
+          v-for="(lyric, index) in convertLyric"
+          :key="index"
+          :class="{ active: lyric === currentLyric }"
+          @click="() => setCurrentlyTimer(lyric.start || 0)"
+        ></p>
       </perfect-scrollbar>
     </section>
   </div>
 </template>
 
 <script>
-import { formatTimer } from "./helpers/timer";
+import { formatTimer, timeStringToSecond } from "./helpers/timer";
 import { deleteElement, threatSongs } from "./helpers/utils";
 import songs from "./mocks/songs";
 
@@ -141,7 +145,7 @@ export default {
   name: "App",
   data() {
     return {
-      loops: 10,
+      loops: 1,
       countLoops: 0,
       current: {},
       coverObject: { cover: true, animated: false },
@@ -154,7 +158,8 @@ export default {
       seekSliderFormat: v => `${formatTimer(this.current.seconds * (v / 100))}`,
       volumeSlider: 100,
       activePlaylist: false,
-      activeLyrics: false
+      activeLyrics: false,
+      currentLyric: ""
     };
   },
   methods: {
@@ -169,8 +174,14 @@ export default {
       this.current = this.songs[this.index];
       this.setCover();
     },
-    play(song) {
-      if (song === this.current && this.isPlaying) {
+    setCurrentlyTimer(time) {
+      if (!time) {
+        return false;
+      }
+      this.player.currentTime = time + 0.1;
+    },
+    play(song, isClickFromList = false) {
+      if (isClickFromList && song === this.current && this.isPlaying) {
         return true;
       }
       if (typeof song.src !== "undefined") {
@@ -181,7 +192,7 @@ export default {
       }
       this.player.play();
       this.isPlaying = true;
-
+      this.scrollToActive();
       this.setCover();
     },
     pause() {
@@ -227,6 +238,9 @@ export default {
       this.player.addEventListener("timeupdate", () => {
         let playerTimer = this.player.currentTime;
 
+        this.currentLyric = this.convertLyric.find(
+          el => playerTimer >= el.start && playerTimer <= el.end
+        );
         this.currentlyTimer = formatTimer(playerTimer);
         let percent = Math.round((playerTimer * 100) / this.current.seconds);
         this.seekSlider = percent > 100 ? 100 : percent;
@@ -235,9 +249,7 @@ export default {
       this.player.addEventListener("ended", () => {
         this.setLoopsCount(++this.countLoops);
         if (this.countLoops >= this.loops) {
-          setTimeout(() => {
-            this.next();
-          }, 500);
+          this.next();
         }
         this.isPlaying = false;
         this.play(this.current);
@@ -263,17 +275,88 @@ export default {
           this.activeLyrics = false;
           this.activePlaylist = false;
       }
+    },
+    scrollToActive() {
+      const list = this.$refs.songPlaylist;
+      const active = list.$el.querySelector(".active");
+      const listRect = list.$el.getBoundingClientRect();
+      const activeRect = active.getBoundingClientRect();
+      if (
+        activeRect.top < listRect.top ||
+        activeRect.bottom > listRect.bottom - 100
+      ) {
+        setTimeout(() => {
+          list.$el.scrollTo({
+            top: active.offsetTop - 150
+          });
+        }, 500);
+      }
+    },
+    getSettingFromLocalStorage() {
+      let attribute = ["volumeSlider", "loops", "countLoops"];
+      attribute.forEach(el => {
+        if (localStorage[el]) {
+          this[el] = localStorage[el];
+        }
+      });
+
+      if (localStorage.index) {
+        this.index =
+          localStorage.index > this.songs.length - 1 ? 0 : localStorage.index;
+      }
     }
   },
   mounted() {
     this.songs = threatSongs(this.songs);
+    this.getSettingFromLocalStorage();
     this.setCurrentSong();
     this.player.src = this.current.src;
     this.registerListener();
   },
   computed: {
     convertLyric() {
-      return this.current.lyric ? this.current.lyric.split("\n") : "";
+      if (!this.current.lyric) {
+        return [];
+      }
+      const result = [];
+      const split = this.current.lyric.split(/\n\s*\n/);
+      for (let i = 0; i < split.length; i++) {
+        let subtitle = split[i];
+
+        const [idLine, timeLine, ...textLines] = subtitle.split("\n");
+        const id = parseInt(idLine.trim());
+        // type sub has no time
+        if (isNaN(id)) {
+          return [idLine, timeLine, ...textLines].map((subtitle, id) => ({
+            id,
+            text: subtitle
+          }));
+        }
+
+        // type sub has time
+        const timeString = timeLine.trim();
+        const text = textLines.join("\n").trim();
+        const [start, end] = timeLine
+          .trim()
+          .split("-->")
+          .map(timeStringToSecond);
+        result.push({ id, timeString, text, start, end });
+      }
+      return result;
+    }
+  },
+  watch: {
+    volumeSlider(value) {
+      localStorage.volumeSlider = value;
+    },
+    loops(value) {
+      localStorage.loops = value;
+    },
+    countLoops(value) {
+      localStorage.countLoops = value;
+    },
+    index(value) {
+      localStorage.index = value;
     }
   }
 };
