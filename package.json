@@ -15,6 +15,7 @@
     "axios": "^0.19.2",
     "core-js": "^3.6.4",
     "vue": "^2.6.11",
+    "vue-multiselect": "^2.1.7",
     "vue-slider-component": "^3.2.24",
     "vue2-perfect-scrollbar": "^1.5.56"
   },

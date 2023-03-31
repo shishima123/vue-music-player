@@ -118,6 +118,38 @@
           </button>
         </div>
       </div>
+      <div class="footer">
+        <div class="play-form-to">
+          <label>Play from </label>
+          <multiselect
+            class="select"
+            v-model="playFrom"
+            :options="songIndexOptions"
+            :searchable="false"
+            :show-labels="false"
+            :disabled="setPlayFromToFlg"
+            placeholder=""
+          ></multiselect>
+          <label>to </label>
+          <multiselect
+            class="select"
+            v-model="playTo"
+            :options="songIndexOptions"
+            :searchable="false"
+            :show-labels="false"
+            :disabled="setPlayFromToFlg"
+            placeholder=""
+          ></multiselect>
+        </div>
+        <div>
+          <button
+            class="btn-reset"
+            @click="setPlayFromToFlg = !setPlayFromToFlg"
+          >
+            {{ setPlayFromToFlg ? "Cancel" : "Set" }}
+          </button>
+        </div>
+      </div>
     </section>
 
     <section class="lyrics" :class="{ active: activeLyrics }">
@@ -126,6 +158,16 @@
           <font-awesome-icon icon="times" />
         </button>
       </div>
+      <multiselect
+        class="select-lyric-type"
+        v-model="selectedLyricType"
+        :options="lyricTypesOptions"
+        :allow-empty="false"
+        :searchable="false"
+        label="name"
+        track-by="id"
+        :show-labels="false"
+      ></multiselect>
       <h3>Lyrics</h3>
       <perfect-scrollbar class="text">
         <p
@@ -151,6 +193,8 @@ export default {
     return {
       loops: 1,
       countLoops: 0,
+      playFrom: null,
+      playTo: null,
       current: {},
       coverObject: { cover: true, animated: false },
       index: 0,
@@ -164,7 +208,13 @@ export default {
       activePlaylist: false,
       activeLyrics: false,
       currentLyric: "",
-      removeSongFlg: false
+      lyricTypesOptions: [
+        { id: "lyric1", name: "Lyric 1" },
+        { id: "lyric2", name: "Lyric 2" }
+      ],
+      selectedLyricType: { id: "lyric1", name: "Lyric 1" },
+      removeSongFlg: false,
+      setPlayFromToFlg: false
     };
   },
   methods: {
@@ -209,11 +259,11 @@ export default {
     },
     next() {
       let newIndex = (this.index + 1) % this.songs.length;
-      this.play(newIndex);
+      this.play(this.handlePlayFromTo(newIndex));
     },
     prev() {
       let newIndex = (this.index - 1 + this.songs.length) % this.songs.length;
-      this.play(newIndex);
+      this.play(this.handlePlayFromTo(newIndex));
     },
     removeSongFromPlaylist(song) {
       if (this.songs.length > 1) {
@@ -285,7 +335,13 @@ export default {
       });
     },
     getSettingFromLocalStorage() {
-      let attribute = ["volumeSlider", "loops", "countLoops"];
+      let attribute = [
+        "volumeSlider",
+        "loops",
+        "countLoops",
+        "playFrom",
+        "playTo"
+      ];
       attribute.forEach(el => {
         if (localStorage[el]) {
           this[el] = localStorage[el];
@@ -296,6 +352,35 @@ export default {
         this.index =
           localStorage.index > this.songs.length - 1 ? 0 : localStorage.index;
       }
+      if (localStorage.playFrom) {
+        this.playFrom =
+          localStorage.playFrom === "null" ? null : localStorage.playFrom;
+      }
+      if (localStorage.playTo) {
+        this.playTo =
+          localStorage.playTo === "null" ? null : localStorage.playTo;
+      }
+    },
+    handlePlayFromTo(index) {
+      if (!this.setPlayFromToFlg) {
+        return index;
+      }
+      if (!this.playFrom && !this.playTo) {
+        return index;
+      }
+
+      if (index === this.songs.length - 1) {
+        return this.playTo - 1;
+      }
+      if (index === 0) {
+        return this.playFrom - 1;
+      }
+      let from = Number(this.playFrom ? this.playFrom : 0);
+      let to = Number(this.playTo ? this.playTo : this.songs.length - 1);
+      const range = to - from + 1;
+      const normalizedIndex = (index - from + 1) % range;
+      index = from + normalizedIndex - 1;
+      return index;
     }
   },
   mounted() {
@@ -308,11 +393,11 @@ export default {
   },
   computed: {
     convertLyric() {
-      if (!this.current.lyric) {
+      if (typeof this.current[this.selectedLyricType.id] === "undefined") {
         return [];
       }
       const result = [];
-      const split = this.current.lyric.split(/\n\s*\n/);
+      const split = this.current[this.selectedLyricType.id].split(/\n\s*\n/);
       for (let i = 0; i < split.length; i++) {
         let subtitle = split[i];
 
@@ -336,6 +421,9 @@ export default {
         result.push({ id, timeString, text, start, end });
       }
       return result;
+    },
+    songIndexOptions() {
+      return [...Array(this.songs.length).keys()].map(el => el + 1);
     }
   },
   watch: {
@@ -350,6 +438,12 @@ export default {
     },
     index(value) {
       localStorage.index = value;
+    },
+    playFrom(value) {
+      localStorage.playFrom = value;
+    },
+    playTo(value) {
+      localStorage.playTo = value;
     }
   }
 };

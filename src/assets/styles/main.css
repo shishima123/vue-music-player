@@ -149,8 +149,7 @@ input[type=number] {
 
 .cover-wrapper {
     width: 100%;
-    margin-top: 30px;
-    height: 120px;
+    height: 100px;
     text-align: center;
 }
 
@@ -179,7 +178,6 @@ input[type=number] {
 }
 
 .artist {
-    font-family: Muli;
     width: 100%;
     font-weight: 400;
     text-align: center;
@@ -296,6 +294,15 @@ input[type=number] {
     background-color: #f3f3f3;
 }
 
+.play-form-to {
+    display: flex;
+    align-items: center;
+}
+.play-form-to > .select {
+    width: 80px;
+    margin: 0 7px;
+}
+
 .loops-input {
     padding: 2px;
     margin: 0 2px;
@@ -323,6 +330,7 @@ input[type=number] {
     background-color: #fff;
     border-radius: 15px;
     overflow: auto;
+    position: relative;
 }
 
 .ps {
@@ -370,6 +378,13 @@ input[type=number] {
 
 .lyrics p:not(:last-child) {
     margin-bottom: 8px;
+}
+
+.select-lyric-type {
+    width: 110px!important;
+    position: absolute!important;
+    top: 10px;
+    left: 10px;
 }
 
 /**** End Lyrics ****/
