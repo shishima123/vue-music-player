@@ -66,6 +66,14 @@ $ git push origin new-songs
 
 4. Submit a pull request.
 
+## 💁🏻 Deploy to github pages
+
+Open the terminal/command line in the dist folder (remember to open it in the dist folder) and run the following commands in turn:
+
+    git add -A
+    git commit -m "deploy"
+    git push -f https://github.com/shishima123/vue-music-player.git master:gh-pages
+
 ## :memo: License
 
 Copyright © 2020, [Davi Guimarães](https://github.com/davigl).
