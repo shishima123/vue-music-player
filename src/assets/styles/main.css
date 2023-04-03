@@ -24,6 +24,7 @@ body {
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
 }
 
 button {
@@ -66,13 +67,44 @@ input[type=number] {
     display: none;
 }
 
+/* Customize website's scrollbar like Mac OS
+Not supports in Firefox and IE */
+
+
+/* total width */
+.scrollbar::-webkit-scrollbar {
+    background-color:#fff;
+    width:16px
+}
+
+/* background of the scrollbar except button or resizer */
+.scrollbar::-webkit-scrollbar-track {
+    background-color:#fff
+}
+
+/* scrollbar itself */
+.scrollbar::-webkit-scrollbar-thumb {
+    background-color: #d7d5d5;
+    border-radius:16px;
+    border:5px solid #fff
+}
+
+/* set button(top and bottom of the scrollbar) */
+.scrollbar::-webkit-scrollbar-button {display:none}
+
 /**** Start playlist ****/
 .playlist {
-    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 100%;
+    max-width: 375px;
     max-height: 545px;
+    margin: 0 auto;
+    background-color: #fff;
     border-radius: 10px;
-    position: relative;
     overflow: auto;
+    position: relative;
 }
 
 .playlist h3 {
@@ -81,6 +113,11 @@ input[type=number] {
     font-weight: 400;
     text-align: center;
     padding: 20px 0;
+}
+
+.playlist .song-playlist {
+    overflow: auto;
+    height: 100%;
 }
 
 .playlist .song {
@@ -310,6 +347,7 @@ input[type=number] {
     text-align: center;
     border: none;
     font-size: inherit;
+    border-bottom: 1px  #d4d4d4 solid;
 }
 
 .text-primary {
@@ -328,23 +366,15 @@ input[type=number] {
     max-height: 545px;
     margin: 0 auto;
     background-color: #fff;
-    border-radius: 15px;
+    border-radius: 10px;
     overflow: auto;
     position: relative;
-}
-
-.ps {
-    max-height: calc(100% - 80px);
-}
-
-.ps > .ps__rail-x, .ps > .ps__rail-y {
-    opacity: 0.2;
 }
 
 .lyrics .text {
     padding: 20px 30px;
     text-align: center;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .lyrics .text:hover {
@@ -360,10 +390,18 @@ input[type=number] {
 }
 
 .lyrics p {
-    color: #989595;
-    font-size: 18px;
-    transition: all 0.2s;
+    color: #696969;
+    transition: all 0.3s;
     cursor: pointer;
+    font-size: 18px;
+}
+
+.lyrics p.lyric2 {
+    text-align: left;
+}
+
+.lyrics p.over {
+    color: #b6b6b6;
 }
 
 .lyrics p:hover {
@@ -371,13 +409,16 @@ input[type=number] {
 }
 
 .lyrics p.active {
-    color: black;
+    color: #355fe5;
     font-weight: bold;
-    transform: scale(1.1);
 }
 
 .lyrics p:not(:last-child) {
     margin-bottom: 8px;
+}
+
+.lyrics p:first-letter {
+    text-transform:capitalize;
 }
 
 .select-lyric-type {
@@ -385,10 +426,6 @@ input[type=number] {
     position: absolute!important;
     top: 10px;
     left: 10px;
-}
-
-.first-letter:first-letter {
-    text-transform:capitalize;
 }
 
 /**** End Lyrics ****/

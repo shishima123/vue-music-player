@@ -3,8 +3,6 @@ import App from "./App.vue";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import VueSlider from "vue-slider-component";
 import "vue-slider-component/theme/antd.css";
-import PerfectScrollbar from "vue2-perfect-scrollbar";
-import "vue2-perfect-scrollbar/dist/vue2-perfect-scrollbar.css";
 import "vue-multiselect/dist/vue-multiselect.min.css";
 
 import {
@@ -36,7 +34,6 @@ library.add(
   faMusic
 );
 
-Vue.use(PerfectScrollbar);
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 Vue.component("VueSlider", VueSlider);
 Vue.component("multiselect", Multiselect);

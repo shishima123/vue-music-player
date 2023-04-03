@@ -826,10 +826,23 @@ every drop of the water will be gone
 try it and see
 `,
     lyric2: `Bubbles in Boiling Water
-G :   Where do the bubbles come from when you boil water?
-Water is a liquid. When it is heated, it moves around faster and faster. When it starts to boil, the liquid turns into a gas. This gas is called water vapor. This gas is lighter than the water around it. It rises to the top. Then it disappears into the air.
-As the water gets hotter and hotter, it starts turning into gas very quickly. A lot of bubbles form at the same time. All these bubbles try to escape at once. The bubbles push the water out of the way and “jump” out. This is what we call “boiling water.”
-More and more water turns into gas. More of it disappears into the air. After a while, every drop of the water will be gone. Try it and see!`
+Where do the bubbles come from when you boil water?
+Water is a liquid.
+When it is heated, it moves around faster and faster.
+When it starts to boil, the liquid turns into a gas.
+This gas is called water vapor.
+This gas is lighter than the water around it.
+It rises to the top.
+Then it disappears into the air.
+As the water gets hotter and hotter, it starts turning into gas very quickly.
+A lot of bubbles form at the same time.
+All these bubbles try to escape at once.
+The bubbles push the water out of the way and “jump” out.
+This is what we call “boiling water.”
+More and more water turns into gas.
+More of it disappears into the air.
+After a while, every drop of the water will be gone.
+Try it and see!`
   },
   {
     id: 9,
@@ -2525,11 +2538,21 @@ after that lesson the sun stopped fighting
 they started to work together
 `,
     lyric2: `The Lesson
-W:   There was once a man who lived with his two sons. The two sons were always fighting with each other. One day, the man decided to teach his sons a lesson.
-The man gave his younger son two large sticks. He told the boy to break them. The boy tried hard, but he could not break the sticks. The older son also could not break the sticks.
-At last, the man gave only one stick to each son. He said, “Break them.” Each son broke his stick easily.
-The man said, “You are like these sticks. If you work together, no one can break you. But if you fight with each other all the time, one day, someone will break both of you.”
-After that lesson, the sons stopped fighting. They started to work together.`
+There was once a man who lived with his two sons.
+The two sons were always fighting with each other.
+One day, the man decided to teach his sons a lesson.
+The man gave his younger son two large sticks.
+He told the boy to break them.
+The boy tried hard, but he could not break the sticks.
+The older son also could not break the sticks.
+At last, the man gave only one stick to each son.
+He said, “Break them.”
+Each son broke his stick easily.
+The man said, “You are like these sticks.
+If you work together, no one can break you.
+But if you fight with each other all the time, one day, someone will break both of you.”
+After that lesson, the sons stopped fighting.
+They started to work together.`
   },
   {
     id: 26,
@@ -3060,10 +3083,27 @@ people should practice working as a team
 teamwork works
 `,
     lyric2: `Teamwork
-G :   When people work together as a team, they can achieve a lot. You can easily get things done when you share the work.
-We practice teamwork in family. Both parents have jobs. father is a doctor. mother is a teacher. Both of them work long hours all week. brother is a student at college. I am a student in school. We all have very busy lives. So, when it comes to household chores, we all work together to get them done.
-Each of us has different chores. parents take turns to cook. father takes out the trash. mother does the laundry. brother washes the dishes. I sweep the floor. We share the chores and work together. Everything gets done fast.
-People should practice working as a team. Teamwork works!`
+When people work together as a team, they can achieve a lot.
+You can easily get things done when you share the work.
+We practice teamwork in family.
+Both parents have jobs.
+father is a doctor.
+mother is a teacher.
+Both of them work long hours all week.
+brother is a student at college.
+I am a student in school.
+We all have very busy lives.
+So, when it comes to household chores, we all work together to get them done.
+Each of us has different chores.
+parents take turns to cook.
+father takes out the trash.
+mother does the laundry.
+brother washes the dishes.
+I sweep the floor.
+We share the chores and work together.
+Everything gets done fast.
+People should practice working as a team.
+Teamwork works!`
   },
   {
     id: 31,
@@ -3260,11 +3300,22 @@ racketball is now a famous sport
 it is played all over the world
 `,
     lyric2: `Racquetball
-B :   Racquetball is a popular sport. It was first played in the US. This game started just a little more than 50 years ago. That makes it quite a new sport.
-Other racket sports like tennis and squash have been played for a long time. Racquetball rules are a mix of rules from both handball and squash. A short racket is used to play this game.
-This game became popular almost at once when it first came out. More and more people wanted to play it. Clubs began to build racquetball courts. They built these courts for players of this new sport.
-People of all ages can play this game. But most players today are young people. Most of
-them are between the ages of 12 and 34. Racquetball is now a famous sport. It is played all over the world.`
+Racquetball is a popular sport.
+It was first played in the US.
+This game started just a little more than 50 years ago.
+That makes it quite a new sport.
+Other racket sports like tennis and squash have been played for a long time.
+Racquetball rules are a mix of rules from both handball and squash.
+A short racket is used to play this game.
+This game became popular almost at once when it first came out.
+More and more people wanted to play it.
+Clubs began to build racquetball courts.
+They built these courts for players of this new sport.
+People of all ages can play this game.
+But most players today are young people.
+Most of them are between the ages of 12 and 34.
+Racquetball is now a famous sport.
+It is played all over the world.`
   },
   {
     id: 33,
@@ -3575,10 +3626,22 @@ their bodies must be very fit
 they must be the best to win medals in these games
 `,
     lyric2: `The Olympics
-W:   The Olympic Games are a famous world sports event. These games are held once in four years. There are summer games and winter games.
-People come from countries all over the world to compete in the games. These games started a long time ago in Greece. In those days, only men took part in them. There were only a few sports events.
-Now, women take part in the Olympic Games, too. There are team sports, like basketball. There are martial arts, like judo. More and more types of sports are in the games each time they are held.
-It is very hard to win a medal at these games. Only world champions take part in the Olympics. Those who compete must work hard for years. Their bodies must be very fit. They must be the best to win medals in these games.`
+The Olympic Games are a famous world sports event.
+These games are held once in four years.
+There are summer games and winter games.
+People come from countries all over the world to compete in the games.
+These games started a long time ago in Greece.
+In those days, only men took part in them.
+There were only a few sports events.
+Now, women take part in the Olympic Games, too.
+There are team sports, like basketball.
+There are martial arts, like judo.
+More and more types of sports are in the games each time they are held.
+It is very hard to win a medal at these games.
+Only world champions take part in the Olympics.
+Those who compete must work hard for years.
+Their bodies must be very fit.
+They must be the best to win medals in these games.`
   },
   {
     id: 36,
@@ -4081,10 +4144,20 @@ book a trip on a cruise ship today
 you will love it
 `,
     lyric2: `Go on a Cruise!
-M:   Are you sick of long road trips in a car? Do you find long trips in an airplane boring? Do you want to travel in a special way? You should take a cruise to all the places you would like to see!
-Go by cruise ship to the northeast part of the US! Go late in the year. Then, you can enjoy the colors of the autumn leaves on the trees. It is a beautiful sight.
-Do you like to look at man-made wonders? Go on a cruise to the Panama Canal! Do you want to see icebergs? Do you want to look at seals and whales? Go on a cruise to Alaska!
-Wherever you may choose to go, a cruise is a great way to travel. Book a trip on a cruise ship today! You will love it!`
+Are you sick of long road trips in a car?
+Do you find long trips in an airplane boring?
+Do you want to travel in a special way?
+You should take a cruise to all the places you would like to see!
+Go by cruise ship to the northeast part of the US! Go late in the year.
+Then, you can enjoy the colors of the autumn leaves on the trees.
+It is a beautiful sight.
+Do you like to look at man-made wonders?
+Go on a cruise to the Panama Canal!
+Do you want to see icebergs?
+Do you want to look at seals and whales?
+Go on a cruise to Alaska!
+Wherever you may choose to go, a cruise is a great way to travel.
+Book a trip on a cruise ship today! You will love it!`
   }
 ];
 

@@ -15,36 +15,34 @@
         </button>
       </div>
       <h3>Now Playing <span> 🎵 </span></h3>
-      <perfect-scrollbar class="text" ref="songPlaylist">
-        <ul>
-          <li
-            v-for="(song, key) in songs"
-            :key="song.id"
-            class="song"
-            @click="play(key, true)"
-            :class="{ active: song.id === current.id }"
-          >
-            <div class="cover-playlist">
-              <img class="cover" :src="song.cover" />
-            </div>
-            <div class="details">
-              <h2 class="song-title">
-                {{ song.title }}
-              </h2>
-              <p class="artist">{{ song.artist }}</p>
-            </div>
-            <div class="actions">
-              <button
-                @click="removeSongFromPlaylist(song)"
-                class="delete"
-                v-if="removeSongFlg"
-              >
-                <font-awesome-icon icon="times" />
-              </button>
-            </div>
-          </li>
-        </ul>
-      </perfect-scrollbar>
+      <ul class="song-playlist scrollbar" ref="songPlaylist">
+        <li
+          v-for="(song, key) in songs"
+          :key="song.id"
+          class="song"
+          @click="play(key, true)"
+          :class="{ active: song.id === current.id }"
+        >
+          <div class="cover-playlist">
+            <img class="cover" :src="song.cover" />
+          </div>
+          <div class="details">
+            <h2 class="song-title">
+              {{ song.title }}
+            </h2>
+            <p class="artist">{{ song.artist }}</p>
+          </div>
+          <div class="actions">
+            <button
+              @click="removeSongFromPlaylist(song)"
+              class="delete"
+              v-if="removeSongFlg"
+            >
+              <font-awesome-icon icon="times" />
+            </button>
+          </div>
+        </li>
+      </ul>
     </section>
     <section class="player">
       <div class="cover-wrapper">
@@ -169,18 +167,18 @@
         :show-labels="false"
       ></multiselect>
       <h3>Lyrics</h3>
-      <perfect-scrollbar class="text">
+      <div class="text scrollbar" ref="lyricRef">
         <p
           v-html="lyric.text"
           v-for="(lyric, index) in convertLyric"
           :key="index"
           :class="{
             active: lyric === currentLyric,
-            'first-letter': selectedLyricType.id === 'lyric1'
+            lyric2: selectedLyricType.id === 'lyric2'
           }"
           @click="() => setCurrentlyTimer(lyric.start || 0)"
         ></p>
-      </perfect-scrollbar>
+      </div>
     </section>
   </div>
 </template>
@@ -249,7 +247,7 @@ export default {
       }
       this.index = index;
       this.setCurrentSong();
-      this.scrollToActive();
+      this.scrollToPlaylistActive();
 
       setTimeout(() => {
         this.player.play();
@@ -285,7 +283,7 @@ export default {
         let playerTimer = this.player.currentTime;
 
         this.currentLyric = this.convertLyric.find(
-          el => playerTimer >= el.start && playerTimer <= el.end
+          el => playerTimer >= el.start - 0.4 && playerTimer <= el.end
         );
         this.currentlyTimer = formatTimer(playerTimer);
         let percent = Math.round((playerTimer * 100) / this.current.seconds);
@@ -321,19 +319,20 @@ export default {
           this.activePlaylist = false;
       }
     },
-    scrollToActive() {
+    scrollToPlaylistActive(behavior = "smooth") {
       setTimeout(() => {
         const list = this.$refs.songPlaylist;
-        const active = list.$el.querySelector(".active");
-        const listRect = list.$el.getBoundingClientRect();
+        const active = list.querySelector(".active");
+        if (!active) {
+          return;
+        }
+        const listRect = list.getBoundingClientRect();
         const activeRect = active.getBoundingClientRect();
         if (
           activeRect.top < listRect.top ||
-          activeRect.bottom > listRect.bottom - 100
+          activeRect.bottom > listRect.bottom - 180
         ) {
-          list.$el.scrollTo({
-            top: active.offsetTop - 150
-          });
+          active.scrollIntoView({ behavior: behavior, block: "center" });
         }
       });
     },
@@ -390,7 +389,7 @@ export default {
     this.songs = threatSongs(this.songs);
     this.getSettingFromLocalStorage();
     this.setCurrentSong();
-    this.scrollToActive();
+    this.scrollToPlaylistActive("auto");
 
     this.registerListener();
   },
@@ -447,6 +446,22 @@ export default {
     },
     playTo(value) {
       localStorage.playTo = value;
+    },
+    currentLyric(value) {
+      const list = this.$refs.lyricRef;
+      const active = list.querySelector(".active");
+      if (!active) {
+        return;
+      }
+      const listRect = list.getBoundingClientRect();
+      const activeRect = active.getBoundingClientRect();
+
+      if (
+        activeRect.top < listRect.top ||
+        activeRect.bottom > listRect.bottom - 200
+      ) {
+        active.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
     }
   }
 };
