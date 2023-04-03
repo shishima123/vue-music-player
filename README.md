@@ -68,8 +68,9 @@ $ git push origin new-songs
 
 ## 💁🏻 Deploy to github pages
 
-Open the terminal/command line in the dist folder (remember to open it in the dist folder) and run the following commands in turn:
+Open the terminal/command line and run the following commands in turn:
 
+    cd dist
     git add -A
     git commit -m "deploy"
     git push -f https://github.com/shishima123/vue-music-player.git master:gh-pages

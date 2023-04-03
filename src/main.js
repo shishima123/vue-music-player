@@ -21,6 +21,7 @@ import {
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import Multiselect from "vue-multiselect";
+import "./registerServiceWorker";
 
 library.add(
   faPlay,

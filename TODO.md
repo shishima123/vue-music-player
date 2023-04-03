@@ -4,3 +4,4 @@
     - No time
 2. Select playlist
     - Moi playlist se la 1 file, xong co 1 file tong hop lai
+3. Sp doc list thong qua url

@@ -174,7 +174,10 @@
           v-html="lyric.text"
           v-for="(lyric, index) in convertLyric"
           :key="index"
-          :class="{ active: lyric === currentLyric }"
+          :class="{
+            active: lyric === currentLyric,
+            'first-letter': selectedLyricType.id === 'lyric1'
+          }"
           @click="() => setCurrentlyTimer(lyric.start || 0)"
         ></p>
       </perfect-scrollbar>

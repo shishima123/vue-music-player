@@ -387,6 +387,10 @@ input[type=number] {
     left: 10px;
 }
 
+.first-letter:first-letter {
+    text-transform:capitalize;
+}
+
 /**** End Lyrics ****/
 
 /**** Start Mobile ****/
