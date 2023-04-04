@@ -346,21 +346,24 @@ export default {
       ];
       attribute.forEach(el => {
         if (localStorage[el]) {
-          this[el] = localStorage[el];
+          this[el] = Number(localStorage[el]);
         }
       });
 
       if (localStorage.index) {
-        this.index =
-          localStorage.index > this.songs.length - 1 ? 0 : localStorage.index;
+        this.index = Number(
+          localStorage.index > this.songs.length - 1 ? 0 : localStorage.index
+        );
       }
       if (localStorage.playFrom) {
         this.playFrom =
-          localStorage.playFrom === "null" ? null : localStorage.playFrom;
+          localStorage.playFrom === "null"
+            ? null
+            : Number(localStorage.playFrom);
       }
       if (localStorage.playTo) {
         this.playTo =
-          localStorage.playTo === "null" ? null : localStorage.playTo;
+          localStorage.playTo === "null" ? null : Number(localStorage.playTo);
       }
     },
     handlePlayFromTo(index) {
