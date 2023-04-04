@@ -401,11 +401,11 @@ Not supports in Firefox and IE */
 }
 
 .lyrics p.over {
-    color: #b6b6b6;
+    color: #c0c0c0;
 }
 
 .lyrics p:hover {
-    color: #dc3545;
+    color: #5991e5;
 }
 
 .lyrics p.active {

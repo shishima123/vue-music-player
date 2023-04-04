@@ -174,7 +174,8 @@
           :key="index"
           :class="{
             active: lyric === currentLyric,
-            lyric2: selectedLyricType.id === 'lyric2'
+            lyric2: selectedLyricType.id === 'lyric2',
+            over: lyric.over
           }"
           @click="() => setCurrentlyTimer(lyric.start || 0)"
         ></p>
@@ -244,15 +245,12 @@ export default {
 
       if (this.index !== index) {
         this.setLoopsCount(0);
+        this.index = index;
+        this.setCurrentSong();
+        this.scrollToPlaylistActive();
       }
-      this.index = index;
-      this.setCurrentSong();
-      this.scrollToPlaylistActive();
-
-      setTimeout(() => {
-        this.player.play();
-        this.isPlaying = true;
-      }, 500);
+      this.player.play();
+      this.isPlaying = true;
     },
     pause() {
       this.player.pause();
@@ -295,6 +293,9 @@ export default {
           this.next();
         }
         this.isPlaying = false;
+        this.convertLyric.map(el => {
+          el.over = false;
+        });
         this.play(this.index);
       });
     },
@@ -423,7 +424,7 @@ export default {
           .trim()
           .split("-->")
           .map(timeStringToSecond);
-        result.push({ id, timeString, text, start, end });
+        result.push({ id, timeString, text, start, end, over: false });
       }
       return result;
     },
@@ -451,20 +452,29 @@ export default {
       localStorage.playTo = value;
     },
     currentLyric(value) {
-      const list = this.$refs.lyricRef;
-      const active = list.querySelector(".active");
-      if (!active) {
-        return;
+      if (value) {
+        this.convertLyric.map(el => {
+          if (el.id <= value.id) {
+            return (el.over = true);
+          }
+          return (el.over = false);
+        });
       }
-      const listRect = list.getBoundingClientRect();
-      const activeRect = active.getBoundingClientRect();
-
-      if (
-        activeRect.top < listRect.top ||
-        activeRect.bottom > listRect.bottom - 200
-      ) {
-        active.scrollIntoView({ behavior: "smooth", block: "center" });
-      }
+      setTimeout(() => {
+        const list = this.$refs.lyricRef;
+        const active = list.querySelector(".active");
+        if (!active) {
+          return;
+        }
+        const listRect = list.getBoundingClientRect();
+        const activeRect = active.getBoundingClientRect();
+        if (
+          activeRect.top < listRect.top ||
+          activeRect.bottom > listRect.bottom - 200
+        ) {
+          active.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      });
     }
   }
 };
