@@ -337,64 +337,69 @@ export default {
         }
       });
     },
-    getSettingFromLocalStorage() {
-      let attribute = [
+    setDefaultSettingFromLocalStorage() {
+      let attributes = [
         "volumeSlider",
         "loops",
         "countLoops",
         "playFrom",
         "playTo"
       ];
-      attribute.forEach(el => {
+      attributes.forEach(el => {
         if (localStorage[el]) {
           this[el] = Number(localStorage[el]);
         }
       });
 
       if (localStorage.index) {
-        this.index = Number(
-          localStorage.index > this.songs.length - 1 ? 0 : localStorage.index
-        );
+        this.index =
+          Number(localStorage.index) > this.songs.length - 1
+            ? 0
+            : Number(localStorage.index);
       }
+
       if (localStorage.playFrom) {
         this.playFrom =
           localStorage.playFrom === "null"
             ? null
             : Number(localStorage.playFrom);
       }
+
       if (localStorage.playTo) {
         this.playTo =
           localStorage.playTo === "null" ? null : Number(localStorage.playTo);
       }
     },
-    handlePlayFromTo(index) {
+    handlePlayFromTo(newIndex) {
       if (!this.setPlayFromToFlg) {
-        return index;
-      }
-      if (!this.playFrom && !this.playTo) {
-        return index;
+        return newIndex;
       }
 
-      if (index === this.songs.length - 1) {
+      if (!this.playFrom && !this.playTo) {
+        return newIndex;
+      }
+
+      if (newIndex === this.songs.length - 1) {
         return this.playTo - 1;
       }
-      if (index === 0) {
+
+      if (newIndex === 0) {
         return this.playFrom - 1;
       }
+
       let from = Number(this.playFrom ? this.playFrom : 0);
       let to = Number(this.playTo ? this.playTo : this.songs.length - 1);
       const range = to - from + 1;
-      const normalizedIndex = (index - from + 1) % range;
-      index = from + normalizedIndex - 1;
-      return index;
+      const normalizedIndex = (newIndex - from + 1) % range;
+      newIndex = from + normalizedIndex - 1;
+      return newIndex;
     }
   },
   mounted() {
     this.songs = threatSongs(this.songs);
-    this.getSettingFromLocalStorage();
+    this.setDefaultSettingFromLocalStorage();
     this.setCurrentSong();
     this.scrollToPlaylistActive("auto");
-
     this.registerListener();
   },
   computed: {
@@ -402,7 +407,7 @@ export default {
       if (typeof this.current[this.selectedLyricType.id] === "undefined") {
         return [];
       }
-      const result = [];
+      const lyricConverted = [];
       const split = this.current[this.selectedLyricType.id].split(/\n\s*\n/);
       for (let i = 0; i < split.length; i++) {
         let subtitle = split[i];
@@ -424,9 +429,9 @@ export default {
           .trim()
           .split("-->")
           .map(timeStringToSecond);
-        result.push({ id, timeString, text, start, end, over: false });
+        lyricConverted.push({ id, timeString, text, start, end, over: false });
       }
-      return result;
+      return lyricConverted;
     },
     songIndexOptions() {
       return [...Array(this.songs.length).keys()].map(el => el + 1);
