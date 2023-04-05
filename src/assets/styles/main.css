@@ -67,10 +67,18 @@ input[type=number] {
     display: none;
 }
 
+.scrolled {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    transition: all 0.3s;
+}
+
 /* Customize website's scrollbar like Mac OS
 Not supports in Firefox and IE */
-
-
 /* total width */
 .scrollbar::-webkit-scrollbar {
     background-color:#fff;
@@ -426,6 +434,7 @@ Not supports in Firefox and IE */
     position: absolute!important;
     top: 10px;
     left: 10px;
+    z-index: 10;
 }
 
 /**** End Lyrics ****/
@@ -463,12 +472,6 @@ Not supports in Firefox and IE */
     .playlist.active, .lyrics.active {
         box-shadow: rgb(44, 62, 80) 0px -15px 15px -15px;
         height: 80vh;
-    }
-
-    .playlist h3, .lyrics h3 {
-        border-bottom: #5d5555 solid 1px;
-        top: 0;
-        background-color: white;
     }
 
     .actions > .close {

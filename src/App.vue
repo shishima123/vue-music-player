@@ -15,7 +15,11 @@
         </button>
       </div>
       <h3>Now Playing <span> 🎵 </span></h3>
-      <ul class="song-playlist scrollbar" ref="songPlaylist">
+      <ul
+        class="song-playlist scrollbar"
+        ref="songPlaylist"
+        v-scroll-element="handleScrollPlaylistLyric"
+      >
         <li
           v-for="(song, key) in songs"
           :key="song.id"
@@ -44,6 +48,7 @@
         </li>
       </ul>
     </section>
+
     <section class="player">
       <div class="cover-wrapper">
         <img v-bind:class="coverObject" :src="current.cover" />
@@ -167,7 +172,11 @@
         :show-labels="false"
       ></multiselect>
       <h3>Lyrics</h3>
-      <div class="text scrollbar" ref="lyricRef">
+      <div
+        class="text scrollbar"
+        ref="lyricRef"
+        v-scroll-element="handleScrollPlaylistLyric"
+      >
         <p
           v-html="lyric.text"
           v-for="(lyric, index) in convertLyric"
@@ -393,6 +402,13 @@ export default {
       const normalizedIndex = (newIndex - from + 1) % range;
       newIndex = from + normalizedIndex - 1;
       return newIndex;
+    },
+    handleScrollPlaylistLyric(evt, el) {
+      if (el.scrollTop > 0) {
+        el.previousSibling.classList.add("scrolled");
+      } else {
+        el.previousSibling.classList.remove("scrolled");
+      }
     }
   },
   mounted() {

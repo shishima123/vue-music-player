@@ -39,6 +39,17 @@ Vue.component("VueSlider", VueSlider);
 Vue.component("multiselect", Multiselect);
 Vue.config.productionTip = false;
 
+Vue.directive("scroll-element", {
+  inserted: function(el, binding) {
+    let f = function(evt) {
+      if (binding.value(evt, el)) {
+        el.removeEventListener("scroll", f);
+      }
+    };
+    el.addEventListener("scroll", f);
+  }
+});
+
 new Vue({
   render: h => h(App)
 }).$mount("#app");
