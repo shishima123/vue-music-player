@@ -111,7 +111,7 @@
           </p>
           <p>
             <label>Loop for</label>
-            <input class="loops-input" v-model="loops" type="number" />
+            <input class="loops-input" v-model="loops" type="text" />
             <span>times</span>
           </p>
         </div>
@@ -202,7 +202,7 @@ export default {
   name: "App",
   data() {
     return {
-      loops: 1,
+      loops: 10,
       countLoops: 0,
       playFrom: null,
       playTo: null,
@@ -256,7 +256,7 @@ export default {
         this.setLoopsCount(0);
         this.index = index;
         this.setCurrentSong();
-        this.scrollToPlaylistActive();
+        this.scrollToActiveInPlaylist();
       }
       this.player.play();
       this.isPlaying = true;
@@ -329,9 +329,19 @@ export default {
           this.activePlaylist = false;
       }
     },
-    scrollToPlaylistActive(behavior = "smooth") {
+    scrollToActiveInPlaylist(behavior = "smooth") {
       setTimeout(() => {
         const list = this.$refs.songPlaylist;
+        const active = list.querySelector(".active");
+        if (!active) {
+          return;
+        }
+        active.scrollIntoView({ behavior: behavior, block: "center" });
+      });
+    },
+    scrollToActiveInLyrics() {
+      setTimeout(() => {
+        const list = this.$refs.lyricRef;
         const active = list.querySelector(".active");
         if (!active) {
           return;
@@ -340,9 +350,9 @@ export default {
         const activeRect = active.getBoundingClientRect();
         if (
           activeRect.top < listRect.top ||
-          activeRect.bottom > listRect.bottom - 180
+          activeRect.bottom > listRect.bottom - 200
         ) {
-          active.scrollIntoView({ behavior: behavior, block: "center" });
+          active.scrollIntoView({ behavior: "smooth", block: "center" });
         }
       });
     },
@@ -415,7 +425,7 @@ export default {
     this.songs = threatSongs(this.songs);
     this.setDefaultSettingFromLocalStorage();
     this.setCurrentSong();
-    this.scrollToPlaylistActive("auto");
+    this.scrollToActiveInPlaylist("auto");
     this.registerListener();
   },
   computed: {
@@ -457,7 +467,9 @@ export default {
     volumeSlider(value) {
       localStorage.volumeSlider = value;
     },
-    loops(value) {
+    loops(value, old) {
+      value = isNaN(value) ? old : value;
+      this.loops = value;
       localStorage.loops = value;
     },
     countLoops(value) {
@@ -481,21 +493,7 @@ export default {
           return (el.over = false);
         });
       }
-      setTimeout(() => {
-        const list = this.$refs.lyricRef;
-        const active = list.querySelector(".active");
-        if (!active) {
-          return;
-        }
-        const listRect = list.getBoundingClientRect();
-        const activeRect = active.getBoundingClientRect();
-        if (
-          activeRect.top < listRect.top ||
-          activeRect.bottom > listRect.bottom - 200
-        ) {
-          active.scrollIntoView({ behavior: "smooth", block: "center" });
-        }
-      });
+      this.scrollToActiveInLyrics();
     }
   }
 };

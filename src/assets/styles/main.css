@@ -399,7 +399,7 @@ Not supports in Firefox and IE */
 
 .lyrics p {
     color: #696969;
-    transition: all 0.3s;
+    transition: all 0.5s;
     cursor: pointer;
     font-size: 18px;
 }
