@@ -1,16 +1,16 @@
 <template>
   <div id="app">
     <div class="nav-mobile sp-only">
-      <div @click="() => activeNavMobile('playlist')">
+      <div @click="activeNavMobile('playlist')">
         <font-awesome-icon :icon="['fas', 'list']" />
       </div>
-      <div @click="() => activeNavMobile('lyrics')">
+      <div @click="activeNavMobile('lyrics')">
         <font-awesome-icon :icon="['fas', 'music']" />
       </div>
     </div>
     <section class="playlist" :class="{ active: activePlaylist }">
       <div class="actions sp-only">
-        <button class="close" @click="() => activeNavMobile('playlist')">
+        <button class="close" @click="activeNavMobile('playlist')">
           <font-awesome-icon icon="times" />
         </button>
       </div>
@@ -92,7 +92,7 @@
         <button class="prev" @click="prev" v-if="songs.length > 1">
           <font-awesome-icon icon="step-backward" />
         </button>
-        <button class="play" v-if="!isPlaying" @click="() => play(index)">
+        <button class="play" v-if="!isPlaying" @click="play(index)">
           <font-awesome-icon icon="play" />
         </button>
         <button class="pause" v-else @click="pause">
@@ -116,7 +116,7 @@
           </p>
         </div>
         <div>
-          <button class="btn-reset" @click="() => setLoopsCount(0)">
+          <button class="btn-reset" @click="setLoopsCount(0)">
             Reset
           </button>
         </div>
@@ -157,7 +157,7 @@
 
     <section class="lyrics" :class="{ active: activeLyrics }">
       <div class="actions sp-only">
-        <button class="close" @click="() => activeNavMobile()">
+        <button class="close" @click="activeNavMobile()">
           <font-awesome-icon icon="times" />
         </button>
       </div>
@@ -186,7 +186,7 @@
             lyric2: selectedLyricType.id === 'lyric2',
             over: lyric.over
           }"
-          @click="() => setCurrentlyTimer(lyric.start || 0)"
+          @click="setCurrentlyTimer(lyric.start || 0)"
         ></p>
       </div>
     </section>
