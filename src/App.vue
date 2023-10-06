@@ -153,6 +153,19 @@
           </button>
         </div>
       </div>
+      <div class="">
+        <div>
+          Sleep Timer
+        </div>
+        <div>
+          <input type="checkbox" id="checkbox" v-model="sleepTimer.checked" />
+          <label for="checkbox"><label>Sleep After</label><input type="text" class="loops-input" v-model="sleepTimer.time"><span>minutes</span></label>
+        </div>
+        <div>
+          <input type="checkbox" id="checkbox" v-model="sleepLastSong" />
+          <label for="checkbox">Play last song to end</label>
+        </div>
+      </div>
     </section>
 
     <section class="lyrics" :class="{ active: activeLyrics }">
@@ -226,6 +239,12 @@ export default {
       selectedLyricType: {id: "lyric1", name: "Lyric 1"},
       removeSongFlg: false,
       setPlayFromToFlg: false,
+      sleep: false,
+      sleepTimer: {
+        time: 0,
+        checked: false
+      },
+      sleepLastSong: false
     };
   },
   methods: {
