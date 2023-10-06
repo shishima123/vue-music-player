@@ -2,33 +2,33 @@
   <div id="app">
     <div class="nav-mobile sp-only">
       <div @click="activeNavMobile('playlist')">
-        <font-awesome-icon :icon="['fas', 'list']" />
+        <font-awesome-icon :icon="['fas', 'list']"/>
       </div>
       <div @click="activeNavMobile('lyrics')">
-        <font-awesome-icon :icon="['fas', 'music']" />
+        <font-awesome-icon :icon="['fas', 'music']"/>
       </div>
     </div>
     <section class="playlist" :class="{ active: activePlaylist }">
       <div class="actions sp-only">
         <button class="close" @click="activeNavMobile('playlist')">
-          <font-awesome-icon icon="times" />
+          <font-awesome-icon icon="times"/>
         </button>
       </div>
       <h3>Now Playing <span> 🎵 </span></h3>
       <ul
-        class="song-playlist scrollbar"
-        ref="songPlaylist"
-        v-scroll-element="handleScrollPlaylistLyric"
+          class="song-playlist scrollbar"
+          ref="songPlaylist"
+          v-scroll-element="handleScrollPlaylistLyric"
       >
         <li
-          v-for="(song, key) in songs"
-          :key="song.id"
-          class="song"
-          @click="play(key, true)"
-          :class="{ active: song.id === current.id }"
+            v-for="(song, key) in songs"
+            :key="song.id"
+            class="song"
+            @click="play(key, true)"
+            :class="{ active: song.id === current.id }"
         >
           <div class="cover-playlist">
-            <img class="cover" :src="song.cover" />
+            <img class="cover" :src="song.cover"/>
           </div>
           <div class="details">
             <h2 class="song-title">
@@ -38,11 +38,11 @@
           </div>
           <div class="actions">
             <button
-              @click="removeSongFromPlaylist(song)"
-              class="delete"
-              v-if="removeSongFlg"
+                @click="removeSongFromPlaylist(song)"
+                class="delete"
+                v-if="removeSongFlg"
             >
-              <font-awesome-icon icon="times" />
+              <font-awesome-icon icon="times"/>
             </button>
           </div>
         </li>
@@ -51,7 +51,7 @@
 
     <section class="player">
       <div class="cover-wrapper">
-        <img v-bind:class="coverObject" :src="current.cover" />
+        <img v-bind:class="coverObject" :src="current.cover"/>
       </div>
       <div class="song-details">
         <h2 class="song-title">
@@ -59,10 +59,10 @@
         </h2>
         <p class="artist">{{ current.artist }}</p>
         <vue-slider
-          v-model="seekSlider"
-          :tooltip="'active'"
-          @change="seekTo"
-          :tooltip-formatter="seekSliderFormat"
+            v-model="seekSlider"
+            :tooltip="'active'"
+            @change="seekTo"
+            :tooltip-formatter="seekSliderFormat"
         ></vue-slider>
 
         <div class="timer">
@@ -74,32 +74,32 @@
 
         <div class="volume_container">
           <span class="volume-down">
-            <font-awesome-icon icon="volume-down" />
+            <font-awesome-icon icon="volume-down"/>
           </span>
 
           <vue-slider
-            v-model="volumeSlider"
-            :tooltip="'active'"
-            @change="setVolume"
-            :style="{ width: '100%' }"
+              v-model="volumeSlider"
+              :tooltip="'active'"
+              @change="setVolume"
+              :style="{ width: '100%' }"
           ></vue-slider>
           <span class="volume-up">
-            <font-awesome-icon icon="volume-up" />
+            <font-awesome-icon icon="volume-up"/>
           </span>
         </div>
       </div>
       <div class="controls">
         <button class="prev" @click="prev" v-if="songs.length > 1">
-          <font-awesome-icon icon="step-backward" />
+          <font-awesome-icon icon="step-backward"/>
         </button>
         <button class="play" v-if="!isPlaying" @click="play(index)">
-          <font-awesome-icon icon="play" />
+          <font-awesome-icon icon="play"/>
         </button>
         <button class="pause" v-else @click="pause">
-          <font-awesome-icon icon="pause" />
+          <font-awesome-icon icon="pause"/>
         </button>
         <button class="next" @click="next" v-if="songs.length > 1">
-          <font-awesome-icon icon="step-forward" />
+          <font-awesome-icon icon="step-forward"/>
         </button>
       </div>
       <div class="footer">
@@ -111,7 +111,7 @@
           </p>
           <p>
             <label>Loop for</label>
-            <input class="loops-input" v-model="loops" type="text" />
+            <input class="loops-input" v-model="loops" type="text"/>
             <span>times</span>
           </p>
         </div>
@@ -125,29 +125,29 @@
         <div class="play-form-to">
           <label>Play from </label>
           <multiselect
-            class="select"
-            v-model="playFrom"
-            :options="songIndexOptions"
-            :searchable="false"
-            :show-labels="false"
-            :disabled="setPlayFromToFlg"
-            placeholder=""
+              class="select"
+              v-model="playFrom"
+              :options="songIndexOptions"
+              :searchable="false"
+              :show-labels="false"
+              :disabled="setPlayFromToFlg"
+              placeholder=""
           ></multiselect>
           <label>to </label>
           <multiselect
-            class="select"
-            v-model="playTo"
-            :options="songIndexOptions"
-            :searchable="false"
-            :show-labels="false"
-            :disabled="setPlayFromToFlg"
-            placeholder=""
+              class="select"
+              v-model="playTo"
+              :options="songIndexOptions"
+              :searchable="false"
+              :show-labels="false"
+              :disabled="setPlayFromToFlg"
+              placeholder=""
           ></multiselect>
         </div>
         <div>
           <button
-            class="btn-reset"
-            @click="setPlayFromToFlg = !setPlayFromToFlg"
+              class="btn-reset"
+              @click="setPlayFromToFlg = !setPlayFromToFlg"
           >
             {{ setPlayFromToFlg ? "Cancel" : "Set" }}
           </button>
@@ -158,35 +158,35 @@
     <section class="lyrics" :class="{ active: activeLyrics }">
       <div class="actions sp-only">
         <button class="close" @click="activeNavMobile()">
-          <font-awesome-icon icon="times" />
+          <font-awesome-icon icon="times"/>
         </button>
       </div>
       <multiselect
-        class="select-lyric-type"
-        v-model="selectedLyricType"
-        :options="lyricTypesOptions"
-        :allow-empty="false"
-        :searchable="false"
-        label="name"
-        track-by="id"
-        :show-labels="false"
+          class="select-lyric-type"
+          v-model="selectedLyricType"
+          :options="lyricTypesOptions"
+          :allow-empty="false"
+          :searchable="false"
+          label="name"
+          track-by="id"
+          :show-labels="false"
       ></multiselect>
       <h3>Lyrics</h3>
       <div
-        class="text scrollbar"
-        ref="lyricRef"
-        v-scroll-element="handleScrollPlaylistLyric"
+          class="text scrollbar"
+          ref="lyricRef"
+          v-scroll-element="handleScrollPlaylistLyric"
       >
         <p
-          v-html="lyric.text"
-          v-for="(lyric, index) in convertLyric"
-          :key="index"
-          :class="{
+            v-html="lyric.text"
+            v-for="(lyric, index) in convertLyric"
+            :key="index"
+            :class="{
             active: lyric === currentLyric,
             lyric2: selectedLyricType.id === 'lyric2',
             over: lyric.over
           }"
-          @click="setCurrentlyTimer(lyric.start || 0)"
+            @click="setCurrentlyTimer(lyric.start || 0)"
         ></p>
       </div>
     </section>
@@ -194,8 +194,8 @@
 </template>
 
 <script>
-import { formatTimer, timeStringToSecond } from "./helpers/timer";
-import { deleteElement, threatSongs } from "./helpers/utils";
+import {formatTimer, timeStringToSecond} from "./helpers/timer";
+import {deleteElement, threatSongs} from "./helpers/utils";
 import songs from "./mocks/songs";
 
 export default {
@@ -207,7 +207,7 @@ export default {
       playFrom: null,
       playTo: null,
       current: {},
-      coverObject: { cover: true, animated: false },
+      coverObject: {cover: true, animated: false},
       index: 0,
       isPlaying: false,
       currentlyTimer: "00:00",
@@ -220,12 +220,12 @@ export default {
       activeLyrics: false,
       currentLyric: "",
       lyricTypesOptions: [
-        { id: "lyric1", name: "Lyric 1" },
-        { id: "lyric2", name: "Lyric 2" }
+        {id: "lyric1", name: "Lyric 1"},
+        {id: "lyric2", name: "Lyric 2"}
       ],
-      selectedLyricType: { id: "lyric1", name: "Lyric 1" },
+      selectedLyricType: {id: "lyric1", name: "Lyric 1"},
       removeSongFlg: false,
-      setPlayFromToFlg: false
+      setPlayFromToFlg: false,
     };
   },
   methods: {
@@ -254,7 +254,7 @@ export default {
 
       if (this.index !== index) {
         this.setLoopsCount(0);
-        this.index = index;
+        this.index = this.calcCurrentIndex(index);
         this.setCurrentSong();
         this.scrollToActiveInPlaylist();
       }
@@ -267,11 +267,11 @@ export default {
     },
     next() {
       let newIndex = (this.index + 1) % this.songs.length;
-      this.play(this.handlePlayFromTo(newIndex));
+      this.play(newIndex);
     },
     prev() {
       let newIndex = (this.index - 1 + this.songs.length) % this.songs.length;
-      this.play(this.handlePlayFromTo(newIndex));
+      this.play(newIndex);
     },
     removeSongFromPlaylist(song) {
       if (this.songs.length > 1) {
@@ -290,7 +290,7 @@ export default {
         let playerTimer = this.player.currentTime;
 
         this.currentLyric = this.convertLyric.find(
-          el => playerTimer >= el.start - 0.4 && playerTimer <= el.end
+            el => playerTimer >= el.start - 0.4 && playerTimer <= el.end
         );
         this.currentlyTimer = formatTimer(playerTimer);
         let percent = Math.round((playerTimer * 100) / this.current.seconds);
@@ -305,7 +305,11 @@ export default {
         this.convertLyric.map(el => {
           el.over = false;
         });
-        this.play(this.index);
+        if (this.setPlayFromToFlg) {
+          this.play(this.index);
+        } else {
+          this.next()
+        }
       });
     },
     seekTo() {
@@ -336,7 +340,7 @@ export default {
         if (!active) {
           return;
         }
-        active.scrollIntoView({ behavior: behavior, block: "center" });
+        active.scrollIntoView({behavior: behavior, block: "center"});
       });
     },
     scrollToActiveInLyrics() {
@@ -349,10 +353,10 @@ export default {
         const listRect = list.getBoundingClientRect();
         const activeRect = active.getBoundingClientRect();
         if (
-          activeRect.top < listRect.top ||
-          activeRect.bottom > listRect.bottom - 200
+            activeRect.top < listRect.top ||
+            activeRect.bottom > listRect.bottom - 200
         ) {
-          active.scrollIntoView({ behavior: "smooth", block: "center" });
+          active.scrollIntoView({behavior: "smooth", block: "center"});
         }
       });
     },
@@ -372,29 +376,25 @@ export default {
 
       if (localStorage.index) {
         this.index =
-          Number(localStorage.index) > this.songs.length - 1
-            ? 0
-            : Number(localStorage.index);
+            Number(localStorage.index) > this.songs.length - 1
+                ? 0
+                : Number(localStorage.index);
       }
 
       if (localStorage.playFrom) {
         this.playFrom =
-          localStorage.playFrom === "null"
-            ? null
-            : Number(localStorage.playFrom);
+            localStorage.playFrom === "null"
+                ? null
+                : Number(localStorage.playFrom);
       }
 
       if (localStorage.playTo) {
         this.playTo =
-          localStorage.playTo === "null" ? null : Number(localStorage.playTo);
+            localStorage.playTo === "null" ? null : Number(localStorage.playTo);
       }
     },
-    handlePlayFromTo(newIndex) {
-      if (!this.setPlayFromToFlg) {
-        return newIndex;
-      }
-
-      if (!this.playFrom && !this.playTo) {
+    calcCurrentIndex(newIndex) {
+      if (!this.setPlayFromToFlg || (!this.playFrom && !this.playTo)) {
         return newIndex;
       }
 
@@ -411,7 +411,12 @@ export default {
       const range = to - from + 1;
       const normalizedIndex = (newIndex - from + 1) % range;
       newIndex = from + normalizedIndex - 1;
-      return newIndex;
+
+      if ( this.playFrom <= newIndex && newIndex <= this.playTo)
+      {
+        return newIndex;
+      }
+      return this.playFrom - 1;
     },
     handleScrollPlaylistLyric(evt, el) {
       if (el.scrollTop > 0) {
@@ -452,10 +457,10 @@ export default {
         const timeString = timeLine.trim();
         const text = textLines.join("\n").trim();
         const [start, end] = timeLine
-          .trim()
-          .split("-->")
-          .map(timeStringToSecond);
-        lyricConverted.push({ id, timeString, text, start, end, over: false });
+            .trim()
+            .split("-->")
+            .map(timeStringToSecond);
+        lyricConverted.push({id, timeString, text, start, end, over: false});
       }
       return lyricConverted;
     },
